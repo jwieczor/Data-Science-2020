@@ -10,7 +10,19 @@
 - 'GitHub offers unlimited private repositories to all plans, including free accounts, but allowed only up to three collaborators per repository for free.' -> might have an impact on work!
 - subsidiary of Microsoft
 
-## Bryan J. (2017) Excuse me, do you have a moment to talk about version control? PeerJ Preprints 5:e3159v2 
+## Bryan J. (2017) Excuse me, do you have a moment to talk about version control? PeerJ Preprints 5:e3159v2
+- Git is a version control system
+- 'Git manages the evolution of a set of files - called a repository or repo - in a sane,  highly structured way'
+- Git is used 'to manage the motley collection of files that make up typical data analytical projects, which consist of data,  gures, reports, and, yes, source code'
+- 'GitHub complements Git by providing a slick user interface and distribution mechanism for Git repositories'
+- 'Git is the software you will use locally to record changes to a set of files'
+- for new or existing projects: dedicate a local directory/folder to it; make it an RStudio Project; make it a Git repository
+- repository (repo): a directory of  les that Git manages holistically
+- commit: 'functions like a snapshot of all the files in the repo, at a specifc moment'
+- diff: The set of differences between version (A) of a file and a modified version (B)
+- /also some information on Markdown and types of documents that sgould be used in git (e.g. md, Rmd, csv, tsv); go to text for more info/
+- merge conflict: when git doesn't know how to jointly apply the diffs from two di erent commits to their common parent
+- advice: use conventional file extensions and use internal links
 
 ## R for Data Science Chapter 4 Workflow
 - alt + '-' gives a ' <- ' (shortcut)
