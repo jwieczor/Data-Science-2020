@@ -13,5 +13,12 @@
 ## Bryan J. (2017) Excuse me, do you have a moment to talk about version control? PeerJ Preprints 5:e3159v2 
 
 ## R for Data Science Chapter 4 Workflow
+- alt + '-' gives a ' <- ' (shortcut)
+- Object names must start with a letter, and can only contain letters, numbers, _ and .
+- Use TAB to get suggestions for objects / functions
+- The + tells you that R is waiting for more input; press ESCAPE if you want to abort the expression
+- by surrounding the assignment with parentheses, R also prints its value automatically
 
 ## R for Data Science Chapter 27 Markdown
+- YAML header should be surrounded by ---
+- Chunks of R code should be surrounded by ```
