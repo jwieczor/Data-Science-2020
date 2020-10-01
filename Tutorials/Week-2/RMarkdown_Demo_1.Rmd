@@ -1,0 +1,21 @@
+---
+title: "Edinburgh Biodiversity"
+author: "Jakub Wieczorkowski"
+date: "01/Oct/2020"
+---
+
+## Preamble
+### Packages
+```{r}
+library(dplyr) # an excellent data manipulation package
+library(tidyr) # a package to format your data
+library(pander) #to create pretty tables
+```
+
+### Loading data
+```{r}
+setwd("~/Desktop/DSINEES/week-2.3")
+elongation <- read.csv("EmpetrumElongation.csv", sep = ";") # stem elongation measurements on crowberry
+germination <- read.csv("Germination.csv", sep = ";") # germination of seeds subjected to toxic solutions
+```
+
