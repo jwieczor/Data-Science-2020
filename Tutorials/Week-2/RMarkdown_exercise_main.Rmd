@@ -1,0 +1,64 @@
+---
+title: "Edinburgh Biodiversity"
+author: "Jakub Wieczorkowski"
+date: "30/Sept/2020"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+## Preamble
+### Packages:
+``` {r, message=FALSE, warning=FALSE}
+library("dplyr") #for data manipulation
+library("pander") #to create pretty tables
+```
+
+```{r, include=FALSE}
+setwd("~/Desktop/DSINEES/week-2.2")
+edidiv <- read.csv("edidiv.csv")
+```
+## Data exploration
+Analysis of biodiversity data. Sourced from NBN Gateway (2000-2016)
+
+### Species richness in taxonomic groups
+#### Table
+```{r, message=FALSE}
+richness <- 
+  edidiv %>%
+    group_by(taxonGroup) %>%
+    summarise(Species_richness = n_distinct(taxonName))
+
+pander(richness)
+```
+
+#### Barplot
+``` {r, fig.align="center", fig.width=15, fig.height=8, echo = FALSE}
+barplot(richness$Species_richness, 
+        names.arg = richness$taxonGroup, 
+        xlab = "Taxa", ylab = "Number of species", 
+        ylim = c(0,600)
+        ) 
+```
+
+### The most common species is in each taxonomic group 
+```{r, message=FALSE}
+max_abund <-
+  edidiv %>%
+    group_by(taxonGroup) %>%
+    summarise(taxonName = names(which.max(table(taxonName))))
+
+pander(max_abund) #Create a table
+```
+
+Joining the two data frames together, using "taxonGroup" as the reference
+
+```{r} 
+richness_abund <- inner_join(richness, max_abund, by = "taxonGroup")
+```
+
+```{r}
+richness_abund <- rename(richness_abund, Most_abundant =  taxonName, Taxon = taxonGroup)
+emphasize.italics.cols(3) #Make the 3rd column italics
+pander(richness_abund) #Create a table
+```
