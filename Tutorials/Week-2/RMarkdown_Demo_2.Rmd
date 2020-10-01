@@ -1,0 +1,54 @@
+---
+title: "RMarkdown_Demo_2"
+author: "Jakub Wieczorkowski"
+date: "30/Sept/2020"
+---
+## Preamble
+
+### Packages
+``` {r, message=FALSE, warning=FALSE}
+library('datasets') # To get the loblolly pine growth data
+library('dplyr') # To get summary statistics on the data
+library('pander') # To create beautiful tables
+```
+
+### Loading data
+```{r}
+setwd("~/Desktop/DSINEES/week-2.4")
+pine_growth <- Loblolly # This data shows the height of pine trees at different ages, from different seed stocks
+head(pine_growth)
+```
+
+## Data investigation
+
+### Age-height distribution
+With increasing age, the height of pines becomes more varied.
+
+```{r}
+plot(x = pine_growth$age, y = pine_growth$height, xlab = "Age (Years)", ylab = "Height (m)", col=pine_growth$Seed)
+```
+
+### Comparison of seed stocks in height distribution
+
+```{r}
+boxplot(height ~ Seed, data = pine_growth)
+```
+
+### Summary statistics by the seed type
+
+```{r, message=FALSE}
+pine_growth_seedsumm <- pine_growth %>%
+  group_by(Seed) %>%
+  summarise("Mean Height" = mean(height), "STDEV Height" = sd(height), "Median Height" = median(height))
+pander(pine_growth_seedsumm)
+```
+
+### Summary statistics by age
+
+```{r, message=FALSE}
+pine_growth_agesumm <- pine_growth %>%
+  group_by(age) %>%
+  summarise("Mean Height" = mean(height), "STDEV Height" = sd(height), "Median Height" = median(height))
+pander(pine_growth_agesumm)
+```
+
