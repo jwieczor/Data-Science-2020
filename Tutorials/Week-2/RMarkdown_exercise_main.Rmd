@@ -28,14 +28,14 @@ richness <-
   edidiv %>%
     group_by(taxonGroup) %>%
     summarise(Species_richness = n_distinct(taxonName))
-
+colnames(richness) = c("Taxon_group", "Species_richness")
 pander(richness)
 ```
 
 #### Barplot
 ``` {r, fig.align="center", fig.width=15, fig.height=8, echo = FALSE}
 barplot(richness$Species_richness, 
-        names.arg = richness$taxonGroup, 
+        names.arg = richness$Taxon_group, 
         xlab = "Taxa", ylab = "Number of species", 
         ylim = c(0,600)
         ) 
@@ -47,18 +47,17 @@ max_abund <-
   edidiv %>%
     group_by(taxonGroup) %>%
     summarise(taxonName = names(which.max(table(taxonName))))
-
+emphasize.italics.cols(2)
+colnames(max_abund) = c("Taxon_group", "Taxon_name")
 pander(max_abund) #Create a table
 ```
 
-Joining the two data frames together, using "taxonGroup" as the reference
-
 ```{r} 
-richness_abund <- inner_join(richness, max_abund, by = "taxonGroup")
+richness_abund <- inner_join(richness, max_abund, by = "Taxon_group")
 ```
 
 ```{r}
-richness_abund <- rename(richness_abund, Most_abundant =  taxonName, Taxon = taxonGroup)
+richness_abund <- rename(richness_abund, Most_abundant =  Taxon_name, Taxon = Taxon_group)
 emphasize.italics.cols(3) #Make the 3rd column italics
 pander(richness_abund) #Create a table
 ```
