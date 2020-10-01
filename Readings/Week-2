@@ -34,3 +34,9 @@
 ## R for Data Science Chapter 27 Markdown
 - YAML header should be surrounded by ---
 - Chunks of R code should be surrounded by ```
+- Chunks can be given an optional name: ```{r by-name}
+- echo = FALSE prevents code, but not the results from appearing in the finished file. Use this when writing reports aimed at people who don’t want to see the underlying R code.
+- include = FALSE runs the code, but doesn’t show the code or results in the final document. Use this for setup code that you don’t want cluttering your report
+- some global options given (check the text: 27.4.5)
+- 27.4.6. inline code! nice to use to present results/variables in text and not put numbers manually
+- chekcing directory: 'getwd()'
